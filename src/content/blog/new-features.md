@@ -9,9 +9,9 @@ mathjax: true
 
 Use:
 
-+ start with **```mermaid**
-+ end with **```**
-+ set markdown frontmatter `mermaid: true`.
+- start with **```mermaid**
+- end with **```**
+- set markdown frontmatter `mermaid: true`.
 
 Mermaid Code:
 
@@ -71,7 +71,7 @@ classDiagram
 
 ### Support Mathjax
 
-+ set markdown frontmatter `mathjax: true`.
+- set markdown frontmatter `mathjax: true`.
 
 ```yaml title="Mathjax.md"
 ---

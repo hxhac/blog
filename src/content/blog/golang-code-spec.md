@@ -44,9 +44,7 @@ tags: ["test", "toc"]
 ---
 
 
-**
-*[Go 中的一些优化笔记，简单而不简单](https://mp.weixin.qq.com/s/X8c6ZIJdBFptYA9CRj6wnA)
-***
+***[Go 中的一些优化笔记，简单而不简单](https://mp.weixin.qq.com/s/X8c6ZIJdBFptYA9CRj6wnA)***
 
 
 ---
@@ -121,7 +119,7 @@ tags: ["test", "toc"]
 ---
 
 
-:::tip
+!!! tip
 
 总结一下，几个最基本的
 
@@ -131,7 +129,10 @@ tags: ["test", "toc"]
 - 还有一些
   kiss原则相关的，比如说OOP的SRP，其实就是降低（方法的）颗粒度。如果能够SRP的话，func的params本身就不会太多，这两个是相辅相成的。
 
-:::
+!!!
+
+> [!NOTE]
+> Highlights information that users should take into account, even when skimming.
 
 ## ???
 
