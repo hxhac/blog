@@ -18,3 +18,23 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+
+# build output
+dist/
+# generated types
+.astro/
+.vscode
+.idea
+
+# dependencies
+node_modules/
+
+# logs
+pnpm-debug.log*
+
+
+# environment variables
+.env
+.env.production
+
