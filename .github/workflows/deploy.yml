@@ -16,12 +16,11 @@ jobs:
       - uses: actions/setup-node@main
         with:
           node-version: 20
-          cache: npm
-      - run: npm install -g pnpm
+          cache: yarn
       - name: Install dependencies
-        run: pnpm install
+        run: yarn install # package-lock.json,npm-shrinkwrap.json,yarn.lock
       - name: Build website
-        run: npm run build
+        run: yarn build
 
 #      # Popular action to deploy to GitHub Pages:
 #      # Docs: https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-docusaurus
