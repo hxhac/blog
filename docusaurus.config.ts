@@ -68,6 +68,12 @@ const config: Config = {
       //   },
       // ],
     },
+    giscus: {
+      repo: 'hxhac/blog', // edit this
+      repoId: 'R_kgDOLyA2CA', // edit this
+      category: 'Announcements',
+      categoryId: 'DIC_kwDOLyA2CM4CfwUI', // edit this
+    },
     footer: {
       // style: 'dark',
       // links: [
