@@ -33,10 +33,10 @@ const config: Config = {
     [
       'classic',
       {
-        docs: false,
-        blog: {
+        docs: {
           routeBasePath: '/',
         },
+        blog: false,
         theme: {
           customCss: './src/css/custom.css',
         },
