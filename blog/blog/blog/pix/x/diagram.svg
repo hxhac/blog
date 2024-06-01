@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="svgTag" contentstyletype="text/css" height="368px" preserveAspectRatio="none" style="width: 673px; height: 368px; background: rgb(255, 255, 255); --primary-color: #cccccc; --secondary-color: #ffffff; --tertiary-color: #fbf9eb; --quaternary-color: #cccccc; --text-color: #333333; --line-color: #009ddc; --label-border-color: #cccccc; --label-background-color: #ffffff; --label-text-color: #009ddc; --box-back-color: #f5f5f5; --box-stroke-color: #f5f5f5; --font-stack: Open Sans; --participant-stroke-width: 2; --border-thickness: 1; --font-size: 14;" version="1.1" viewBox="0 0 673 368" width="673px" zoomAndPan="magnify"><defs><style>
+
+    svg g ellipse,
+    svg g circle,
+    svg g rect {
+      stroke: var(--primary-color);
+      stroke-width: var(--participant-stroke-width);
+      /* fill: url(#image); */
+      fill: var(--secondary-color);
+      stroke-dasharray: 7500;
+      animation: draw 5s linear;
+    }
+
+    svg g path {
+      fill: var(--tertiary-color);
+      stroke: var(--quaternary-color);
+      stroke-width: 1.5;
+      stroke-dasharray: 7500;
+      animation: draw 5s linear;
+    }
+
+    svg g polygon {
+      fill: var(--line-color);
+      stroke-dasharray: 7500;
+      animation: draw 5s linear;
+    }
+
+    svg g line,
+    svg g polyline {
+      stroke: var(--line-color);
+      stroke-width: var(--border-thickness);
+      stroke-dasharray: 7500;
+      animation: draw 5s linear;
+    }
+
+    svg g text {
+      fill: var(--text-color);
+      font-family: var(--font-stack), "Tahoma";
+      font-size: 14;
+    }
+
+    svg g line.dashed {
+      stroke-dasharray: 5, 5;
+      animation: dash 1s infinite;
+    }
+
+    svg g line.dotted {
+      stroke-dasharray: 2, 2;
+      animation: dash 1s infinite;
+    }
+
+    svg g line.skipped {
+      stroke-dasharray: 1, 4;
+      animation: dash 1s infinite;
+    }
+
+    svg g line.labelDivider {
+      stroke-width: 2px;
+    }
+
+    svg g .label {
+      stroke: var(--label-border-color);
+      fill: var(--label-background-color);
+    }
+    svg g .labelText {
+      fill: var(--label-text-color);
+    }
+
+    svg g path.actor {
+      stroke: var(--primary-color);
+      stroke-width: 2;
+    }
+
+    svg g path.note {
+      stroke: var(--quaternary-color);
+      fill: var(--tertiary-color);
+      stroke-width: 1;
+      font-size: 12;
+    }
+    svg g polygon.note {
+      stroke: var(--quaternary-color);
+      fill: var(--tertiary-color);
+      stroke-width: 1;
+      font-size: 12;
+    }
+
+    svg g .transparent {
+      fill: none;
+    }
+
+    svg g path.database {
+      fill: var(--secondary-color);
+      stroke: var(--primary-color);
+      stroke-width: 1.5px;
+    }
+
+    svg g path.squiggly {
+      fill: none !important;
+      stroke: var(--line-color) !important;
+    }
+
+    svg g rect.box {
+      fill: var(--box-back-color);
+      stroke: var(--box-stroke-color);
+    }
+    svg g rect.titleBox {
+      fill: none;
+      stroke: white;
+      stroke-width: 5;
+
+    }
+    svg g line.divider {
+      stroke: var(--primary-color);
+      stroke-width: 3.5;
+    }
+    svg g line.altDivider {
+      stroke: var(--primary-color);
+      stroke-dasharray: 2, 2;
+    }
+
+
+    svg g path.alt {
+      fill: var(--primary-color);
+      stroke: var(--primary-color);
+    }
+
+    svg g path.actorClass {
+      fill: var(--primary-color);
+      stroke: var(--primary-color);
+    }
+
+    </style>
+    </defs><g><text font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="210" x="230.5" y="31.9951">从源码到可执行文件到转化过程</text><line x1="52" x2="52" y1="89.5938" y2="361.7891"></line><line x1="234" x2="234" y1="89.5938" y2="361.7891"></line><line x1="455" x2="455" y1="89.5938" y2="361.7891"></line><line x1="652" x2="652" y1="89.5938" y2="361.7891"></line><rect height="38.2969" rx="2.5" ry="2.5" width="64" x="20" y="50.2969"></rect><text font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="42" x="31" y="74.292">编译器</text><rect height="38.2969" rx="2.5" ry="2.5" width="64" x="202" y="50.2969"></rect><text font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="42" x="213" y="74.292">汇编器</text><rect height="38.2969" rx="2.5" ry="2.5" width="64" x="423" y="50.2969"></rect><text font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="42" x="434" y="74.292">链接器</text><rect height="38.2969" rx="2.5" ry="2.5" width="30" x="637" y="50.2969"></rect><text font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="8" x="648" y="74.292">x</text><polygon points="63,124.7266,53,128.7266,63,132.7266,59,128.7266"></polygon><line x1="57" x2="651" y1="128.7266" y2="128.7266"></line><circle r="12" cx="77.8" cy="113.6606" name="label" class="label"></circle><text font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="9" x="73" y="118.6606" class="labelText">1</text><text font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="112" x="94" y="119.6606">源码hello.go(文本)</text><path d="M5,141.7266 L5,234.7266 L99,234.7266 L99,151.7266 L89,141.7266 L5,141.7266 "></path><path d="M89,141.7266 L89,151.7266 L99,151.7266 L89,141.7266 "></path><text font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="52" x="15" y="162.7935">词法分析</text><text font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="52" x="15" y="177.9263">语法分析</text><text font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="52" x="15" y="193.0591">静态检查</text><text font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="65" x="15" y="208.1919">生成中间码</text><text font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="65" x="15" y="223.3247">生成机器码</text><polygon points="222,265.5234,232,269.5234,222,273.5234,226,269.5234"></polygon><line x1="52" x2="228" y1="269.5234" y2="269.5234"></line><circle r="12" cx="67.8" cy="254.45749999999998" name="label" class="label"></circle><text font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="9" x="63" y="259.4575" class="labelText">2</text><text font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="129" x="84" y="260.4575">汇编文件hello.s(文本)</text><polygon points="443,302.6563,453,306.6563,443,310.6563,447,306.6563"></polygon><line x1="234" x2="449" y1="306.6563" y2="306.6563"></line><circle r="12" cx="249.8" cy="291.5903" name="label" class="label"></circle><text font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="8" x="245" y="296.5903" class="labelText">3</text><text font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="169" x="265" y="297.5903">可重定位文件hello.o(二进制)</text><polygon points="640,339.7891,650,343.7891,640,347.7891,644,343.7891"></polygon><line x1="455" x2="646" y1="343.7891" y2="343.7891"></line><circle r="12" cx="470.8" cy="328.7231" name="label" class="label"></circle><text font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="9" x="466" y="333.7231" class="labelText">4</text><text font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="144" x="487" y="334.7231">可执行文件hello(二进制)</text><!--SRC=[TLBDJjj04BxlKyoH7egmIq7g0Oceuem4Bs3i3LaHTgYzWOWJN9eW4WXg6nJ-4OhW04qh4Ah2tylO6-Sjkci3taXmszdlPxuPZLCIo4kBSzG7Yn31H952UBSbkutUoNfK_HDjT-J6UNnQayrAU7UhVkA7owZMZ9yglOjDGfOSNp2NBJbSGE- -6NTsejO5E05C8Gw0ycz5uHbe3Q3z7uzogvsXDY5b-3YXd_05qZG5MYpYy3mEgIZouF83uIWeuBAAhfl5dRgy_XLLlykZXYgkig9_s99hw_9iJHwtIU_diQmsmdzN_TqRPVfSouEkQgvhoZtGnaItJXDOEa8IFrr26YHupP5GKggjg6fb_Kez-hqNFjHD0Gw5tLhyj1zLRnEDhJLG1aWrvfeJWKadfC0y2db4COTb8C42usf_pYBC51mFLnYVXxnJ3AW9wJ7oo4N0LYbODfZOTBRyQSVpj1v6tY5CAO-Pn6FCP4ow0lttCD_7bGpxD92OVYjHxjAlR5dDP3YCcgmSbb-2MP_Vai_gMyt4uoOdkUCS-if-ji3S1Kw306o30F0wjUeA6U1ZYNik-bnTbJto7m00]--></g></svg>
