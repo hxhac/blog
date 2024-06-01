@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="svgTag" contentstyletype="text/css" height="134px" preserveAspectRatio="none" style="width: 690px; height: 134px; background: rgb(255, 255, 255); --primary-color: #cccccc; --secondary-color: #ffffff; --tertiary-color: #fbf9eb; --quaternary-color: #cccccc; --text-color: #333333; --line-color: #009ddc; --label-border-color: #cccccc; --label-background-color: #ffffff; --label-text-color: #009ddc; --box-back-color: #f5f5f5; --box-stroke-color: #f5f5f5; --font-stack: Open Sans; --participant-stroke-width: 2; --border-thickness: 1; --font-size: 14;" version="1.1" viewBox="0 0 690 134" width="690px" zoomAndPan="magnify"><defs><style>
+
+    svg g ellipse,
+    svg g circle,
+    svg g rect {
+      stroke: var(--primary-color);
+      stroke-width: var(--participant-stroke-width);
+      /* fill: url(#image); */
+      fill: var(--secondary-color);
+      stroke-dasharray: 7500;
+      animation: draw 5s linear;
+    }
+
+    svg g path {
+      fill: var(--tertiary-color);
+      stroke: var(--quaternary-color);
+      stroke-width: 1.5;
+      stroke-dasharray: 7500;
+      animation: draw 5s linear;
+    }
+
+    svg g polygon {
+      fill: var(--line-color);
+      stroke-dasharray: 7500;
+      animation: draw 5s linear;
+    }
+
+    svg g line,
+    svg g polyline {
+      stroke: var(--line-color);
+      stroke-width: var(--border-thickness);
+      stroke-dasharray: 7500;
+      animation: draw 5s linear;
+    }
+
+    svg g text {
+      fill: var(--text-color);
+      font-family: var(--font-stack), "Tahoma";
+      font-size: 14;
+    }
+
+    svg g line.dashed {
+      stroke-dasharray: 5, 5;
+      animation: dash 1s infinite;
+    }
+
+    svg g line.dotted {
+      stroke-dasharray: 2, 2;
+      animation: dash 1s infinite;
+    }
+
+    svg g line.skipped {
+      stroke-dasharray: 1, 4;
+      animation: dash 1s infinite;
+    }
+
+    svg g line.labelDivider {
+      stroke-width: 2px;
+    }
+
+    svg g .label {
+      stroke: var(--label-border-color);
+      fill: var(--label-background-color);
+    }
+    svg g .labelText {
+      fill: var(--label-text-color);
+    }
+
+    svg g path.actor {
+      stroke: var(--primary-color);
+      stroke-width: 2;
+    }
+
+    svg g path.note {
+      stroke: var(--quaternary-color);
+      fill: var(--tertiary-color);
+      stroke-width: 1;
+      font-size: 12;
+    }
+    svg g polygon.note {
+      stroke: var(--quaternary-color);
+      fill: var(--tertiary-color);
+      stroke-width: 1;
+      font-size: 12;
+    }
+
+    svg g .transparent {
+      fill: none;
+    }
+
+    svg g path.database {
+      fill: var(--secondary-color);
+      stroke: var(--primary-color);
+      stroke-width: 1.5px;
+    }
+
+    svg g path.squiggly {
+      fill: none !important;
+      stroke: var(--line-color) !important;
+    }
+
+    svg g rect.box {
+      fill: var(--box-back-color);
+      stroke: var(--box-stroke-color);
+    }
+    svg g rect.titleBox {
+      fill: none;
+      stroke: white;
+      stroke-width: 5;
+
+    }
+    svg g line.divider {
+      stroke: var(--primary-color);
+      stroke-width: 3.5;
+    }
+    svg g line.altDivider {
+      stroke: var(--primary-color);
+      stroke-dasharray: 2, 2;
+    }
+
+
+    svg g path.alt {
+      fill: var(--primary-color);
+      stroke: var(--primary-color);
+    }
+
+    svg g path.actorClass {
+      fill: var(--primary-color);
+      stroke: var(--primary-color);
+    }
+
+    </style>
+    </defs><g><rect height="36.2969" rx="12.5" ry="12.5" width="76" x="10" y="48.1484"></rect><text font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="56" x="20" y="71.1436">解决方案</text><rect height="36.2969" rx="12.5" ry="12.5" width="174" x="136" y="20"></rect><text font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="154" x="146" y="42.9951">为栈上的对象增加写屏障</text><rect height="36.2969" rx="12.5" ry="12.5" width="104" x="360" y="20"></rect><text font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="84" x="370" y="42.9951">带来额外开销</text><path d="M310,38.1484 L320,38.1484 C335,38.1484 335,38.1484 350,38.1484 L360,38.1484 " class="null transparent"></path><path d="M86,66.2969 L96,66.2969 C111,66.2969 111,38.1484 126,38.1484 L136,38.1484 " class="null transparent"></path><rect height="36.2969" rx="12.5" ry="12.5" width="314" x="136" y="76.2969"></rect><text font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="294" x="146" y="99.292">在标记节点完成后，重新对栈上的对象进行扫描</text><rect height="36.2969" rx="12.5" ry="12.5" width="178" x="500" y="76.2969"></rect><text font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="158" x="510" y="99.292">重新扫描栈对象需要STW</text><path d="M450,94.4453 L460,94.4453 C475,94.4453 475,94.4453 490,94.4453 L500,94.4453 " class="null transparent"></path><path d="M86,66.2969 L96,66.2969 C111,66.2969 111,94.4453 126,94.4453 L136,94.4453 " class="null transparent"></path><!--SRC=[NOvDIm916CVlyocUemf6YKHqYieAKOXMwppg94FkZAopHZUJA1DB3o5a5jgB1O4fNJI4lempxPxw2eqjNJe-_-VtVraf26m9axACYVCe0CxpWpnzLysnwbOG160w-b2TodHK_MgToBUnC-pA-pjPxSZJQpcikwqs0at9KK_TFhdtj_AnAISbzweqyyhsY-gSEVs1Kor_bSUoNrELXcnSVazgxjc5QWvquBzmv_F6wTRK-Qkgrt-JFT0JDEjHRhlaz8wDn1vQ8NguDnuGsivX9fBn61I9LQ2SmS9SQ3uKdWkdYC2BlYGxOFoGGPgRUPeZ8AX9_CYtkHs30hUjD84CBGYBfcoXpNuKnKKCEpQRSSimkto9k1-Co9y84LQa5cScOG95T-CU15jS67akVk75S72L2Z28fJV1RXojatrivuIsfdc6ikmo91CRmIKKmonhuwmk8WojSLrW7UcVyGC0]--></g></svg>
