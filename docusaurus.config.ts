@@ -18,41 +18,65 @@ const config: Config = {
   // organizationName: 'facebook', // Usually your GitHub org/user name.
   // projectName: 'docusaurus', // Usually your repo name.
 
-  onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+  onBrokenLinks: 'throw', // docusaurus build 时忽略坏链
+  onBrokenAnchors: 'throw',
+  onBrokenMarkdownLinks: 'throw',
+  onDuplicateRoutes: 'throw',
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
-  // i18n: {
-  //   defaultLocale: 'en',
-  //   locales: ['en'],
-  // },
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en'],
+  },
 
   presets: [
     [
       'classic',
       {
-        docs: false,
-        blog: {
+        docs: {
           routeBasePath: '/',
-          blogSidebarTitle: 'All posts',
-          blogSidebarCount: 'ALL',
         },
+        // blog: {
+        //   routeBasePath: '/',
+        //   blogSidebarTitle: 'All posts',
+        //   blogSidebarCount: 'ALL',
+        // },
         theme: {
-          customCss: './src/css/custom.css',
+          customCss: require.resolve('./src/css/custom.css'),
         },
       } satisfies Preset.Options,
     ],
+  ],
+
+  plugins: [
+    require.resolve('docusaurus-plugin-image-zoom'),
+    // [
+    //   '@docusaurus/plugin-ideal-image',
+    //   {
+    //     disableInDev: false,
+    //   },
+    // ],
+    'docusaurus-plugin-sass',
+    // [
+    //   require.resolve('@easyops-cn/docusaurus-search-local'),
+    //   {
+    //     hashed: true,
+    //     indexDocs: true,
+    //     language: ['en', 'zh'],
+    //     highlightSearchTermsOnTargetPage: true,
+    //   }
+    // ]
   ],
 
   themeConfig: {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
-      title: 'My Site',
+      title: 'Hacking',
       logo: {
-        alt: 'My Site Logo',
+        alt: 'Hacking',
         src: 'img/logo.svg',
       },
       // items: [
@@ -77,53 +101,24 @@ const config: Config = {
       categoryId: 'DIC_kwDOLyA2CM4CfwUI', // edit this
     },
     footer: {
-      // style: 'dark',
-      // links: [
-      //   {
-      //     title: 'Docs',
-      //     items: [
-      //       {
-      //         label: 'Tutorial',
-      //         to: '/docs/intro',
-      //       },
-      //     ],
-      //   },
-      //   {
-      //     title: 'Community',
-      //     items: [
-      //       {
-      //         label: 'Stack Overflow',
-      //         href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-      //       },
-      //       {
-      //         label: 'Discord',
-      //         href: 'https://discordapp.com/invite/docusaurus',
-      //       },
-      //       {
-      //         label: 'Twitter',
-      //         href: 'https://twitter.com/docusaurus',
-      //       },
-      //     ],
-      //   },
-      //   {
-      //     title: 'More',
-      //     items: [
-      //       {
-      //         label: 'Blog',
-      //         to: '/blog',
-      //       },
-      //       {
-      //         label: 'GitHub',
-      //         href: 'https://github.com/facebook/docusaurus',
-      //       },
-      //     ],
-      //   },
-      // ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Docs. Built with Docusaurus. Hosted by Github & Cloudflare.`,
     },
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
+      additionalLanguages: ["bash", "sql", "java"],
+    },
+    tableOfContents: {
+      minHeadingLevel: 2,
+      maxHeadingLevel: 5,
+    },
+    zoom: {
+      selector: '.markdown :not(em) > img',
+      background: {
+        light: 'rgb(255, 255, 255)',
+        dark: 'rgb(50, 50, 50)'
+      },
+      config: {}
     },
   } satisfies Preset.ThemeConfig,
 };

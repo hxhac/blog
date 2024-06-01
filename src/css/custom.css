@@ -27,4 +27,51 @@
   --ifm-color-primary-lighter: #32d8b4;
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --color-neutral-muted: rgba(175,184,193,0.2);
+  --borderColor-neutral-muted: rgba(175,184,193,0.2);
+}
+
+img:not(.avatar__photo) {
+  /* 图片等比例缩小 */
+  max-width: 70%;
+  /* 居中展示 */
+  /*padding-left: 20%;*/
+}
+
+
+img[src*="#w60"] {
+  width: 60%;
+}
+
+img[src*="#w50"] {
+  width: 50%;
+}
+
+img[src*="#w40"] {
+  width: 40%;
+}
+
+img[src*="#w30"] {
+  width: 30%;
+}
+
+img[src*="#w20"] {
+  width: 20%;
+}
+
+code {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  padding: 0.2em 0.4em;
+  margin: 0;
+  font-size: 85%;
+  white-space: break-spaces;
+  border-radius: 6px;
+  border: 1px solid var(--borderColor-neutral-muted, var(--color-neutral-muted));
+}
+
+/* 右侧 TOC 的 hover 背景色 */
+.table-of-contents__link:hover, .table-of-contents__link:hover code, .table-of-contents__link--active, .table-of-contents__link--active code {
+  background-color: #efefef;
+  --pad-inline: .5rem;
+  border-radius: .25rem;
 }
