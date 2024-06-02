@@ -2256,9 +2256,6 @@ _do_fork
 ---
 
 
-
-[一次监控内存的猜想 - jame_xhs's blog](https://www.jxhs.me/2022/04/10/%E4%B8%80%E6%AC%A1%E7%9B%91%E6%8E%A7%E5%86%85%E5%AD%98%E7%9A%84%E7%8C%9C%E6%83%B3/)
-
 ```markdown
 但是不理解的点在 为什么 free的值比available大很多，在我印象中available作为程序可看到的内存 一般是
 available ≈ free + cache/buff 所以 free这么大，但是available不大的情况很少见。

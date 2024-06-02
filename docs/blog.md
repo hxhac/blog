@@ -1439,3 +1439,60 @@ qs本身也是我极简主义中“提高使用频率”的实践
 
 
 
+## [2024/6/1] archive
+
+```yaml
+
+    - url: https://github.com/vuejs/vitepress
+      des: |
+        vitepress基于vue3+vite，vuepress基于vue2+webpack。之后 vue 团队将会主要更新 vitepress. 但是也有一些缺点，code block的语言很少，items的语法需要修改，markdown的code block没有自动换行。生态方面，没有类似image-zoom这样的插件，不支持plantUML。总之就是custom还差挺多的。其他的应该还好吧。
+
+        因为最近在移动端看docs比较多，而docusaurus移动端的TOC确实不行，而vitepress的TOC确实不错，所以就像试试看能不能切换到vitepress。
+
+        大概用了20min吧，又体验了一下vitepress，目前相比于docusaurus的缺点：
+
+        - 页面加载速度不如docusaurus，即使是一些内容不多的页面，也会明显感到卡一下才能加载出来
+        - vite和babel+webpack貌似还是有些区别，有个页面在vitepress不能work，懒得处理了
+        - vitepress的TOC也有bug（滑动TOC时，页面会跟着滑动）
+        - 之前CodeBlock里没有自动换行的需求，还是没有
+        - 其他的问题，比如CodeBlock的自定义语言支持、PlantUML之类的就不说了。
+#    - url: https://github.com/airene/vitepress-blog-pure
+#      des: 一般般吧
+    
+    
+    - url: https://github.com/withastro/astro
+      des: |
+        MPA，很多基础功能没有内置，比如“代码块复制按钮”
+        玩了一天之后，就直接迁移回 Docusaurus 了
+        经过体验，有一个观点，Docusaurus 和 Astro 最大的区别就是，一个是 SPA 应用，一个是 MPA 应用。
+        MPA 应用的体验真的挺差的。即使做了 prefetch 和 SSR 等各种优化，仍然很慢。**习惯了 Docusaurus 之类 SPA 应用的丝滑体验，真是受不了这种卡卡卡的感觉。
+
+        - SPA 本地，可以看到普遍 100ms 以内
+        - MAP 本地，可以看到普遍 500ms~600ms，已经配置 prefetch，但是还是没法走缓存
+        - MPA 服务端，服务端比本地更慢，普遍 700ms 以外
+
+        除了加载很慢，还有 MPA 会导致 sidebar 每次刷新，都会回到最上边，就很烦。
+
+        其次就是与 Astro 定制性高，相应的也比较复杂，不懂 ts 的话，各种报错，很难处理。用起来不如 Docusaurus 舒服。**Docusaurus 也比 Astro 要稳定很多，astro 很多都是运行时报错，会直接宕机就很烦。**
+    - url: https://github.com/withastro/starlight
+    - url: https://github.com/cirry/astro-yi
+      des: 这个astro的blog theme真心不错
+      
+      
+    - url: https://github.com/kuizuo/blog
+      des: 目前能找到的最好的docusaurus blog theme，我的blog也是用的这个。试用了hugo之类的各种blog framework，以及Gmeek这种gh-based的（基于issue创建文档太逆天了，不能直接手动添加md来触发build，并且使用utterances实现评论，把issue搞的非常乱。也不支持TOC和列表式Archive，UI也很丑），都不太行。又试用了一下，他这个侵入性太多了，后期不好更新版本，所以自己用blog-only模式自己搞一个，保留该repo作为参考。
+      
+      
+    - url: https://github.com/gohugoio/hugo
+      des: 试用过很多次，但是可能确实天生八字不合，用过的theme包括但不限于 jane, hugo-bearblog, LoveIt, hugo-paper, hugo-paperMod, hugo-PaperModX, hugo-theme-stack, hugo-theme-nostyleplease. 可以看到要不就是neat到TOC和archive都不支持，要不就是LoveIt这种很重的。
+      qs:
+        - q: 比较静态博客和动态博客的优缺点 # WordPress/Typecho/sonic
+        - q: Compare hugo, halo, hexo, Jekyll, astro.
+        - q: 每个文档都需要手动写 meta 数据
+
+```
+
+
+
+
+

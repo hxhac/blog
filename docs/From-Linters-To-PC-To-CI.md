@@ -1,5 +1,5 @@
 ---
-title: 从linters到pre-commit再到ci
+title: 从linters到pre-commit再到CI
 date: 2024-06-01
 tags: [devops, spec]
 ---
@@ -24,11 +24,18 @@ tags: [devops, spec]
 
 ```yaml
     - url: https://github.com/trufflesecurity/trufflehog
-      des: 类似jsleak或者gitleaks这种工具，但是貌似只能scan远程URL，不支持local scan
+      des: 与gitleaks颇为互补的一个secrets scan工具，不同于gitleaks这种专注于扫描本地git repo代码的工具，trufflehog的feats在于scan远程repo，还支持扫描S3、Postman、Docker等服务中的secrets。trufflehog既是cli，也是CI
+      
     - url: https://github.com/gitleaks/gitleaks
       des:
+
     - url: https://github.com/thoughtworks/talisman
-      des: 类似gitleaks，但是是个pre-commit，也就是在commit之前check是否有敏感token之类的
+      des: gitleaks本身就可以配置为pre-commit，为啥还需要tailsman呢?
+      
+   - url: https://github.com/byt3hx/jsleak
+      des: 跟gitleaks还不太一样，jsleak只支持scan网站，也就是mlc和site sucker之间的区别（本地扫描和扫描网站）
+
+
 ```
 
 ```yaml
@@ -82,9 +89,6 @@ pre-commit是各种linter和ci之间的中间xxx，非常好用的
 最早知道goreleaser，就是用来在ci时用来直接release到homebrew的
 
 再之后发现可以用来代替我一直使用的 `antfu/changelogithub` + `softprops/action-gh-release`，用来把changelog直接release掉，才决定好好研究一下goreleaser
-
-:::
-
 
 <details>
 <summary>对比两种写法</summary>
@@ -151,6 +155,11 @@ jobs:
 
 </details>
 
+可以看到goreleaser确实能够简化很多workflow
+
+:::
+
+
 
 
 支持如下feat:
@@ -199,5 +208,55 @@ jobs:
 
 
 
+
+## github-actions
+
+
+```yaml
+- type: ghac-issue
+  repo:
+    - url: https://github.com/alstr/todo-to-issue-action
+      des: 用来把 IDEA 里的 TODO 同步到 issue就像开发项目那样，每解决掉一个问题就直接 close 掉对应的 issue（通过 gh 的 issue 来管理 TODO，也更加方便，便于回溯（没有这个的话，完成后直接在 docs 里删除该 TODO，没有留痕））
+    - url: https://github.com/ribtoks/tdg-github-action
+    - url: https://github.com/actions-cool/issues-similarity-analysis
+      des: check duplicates
+    - url: https://github.com/actions/stale
+      des: automatically close timeout-issues
+
+    - url: https://github.com/actions-cool/issues-helper
+      des: same with `actions/stale`, automatically close issues without reply
+    - url: https://github.com/JasonEtco/create-an-issue
+      des: 定时创建 issue
+    - url: https://github.com/imjohnbo/issue-bot
+      des: 定时创建 issue
+
+    - url: https://github.com/lannonbr/issue-label-manager-action
+      des: issue 标签. 管理 issue 的 label
+    - url: https://github.com/crazy-max/ghaction-github-labeler
+      des: issue 标签.
+    - url: https://github.com/srvaroa/labeler
+      des: issue 标签. Label manager for PRs and Issues based on configurable conditions
+
+    - url: https://github.com/JasonEtco/create-an-issue
+      des: 根据 template 创建 issue. A GitHub Action for creating a new issue from a template file.
+    - url: https://github.com/lowply/issue-from-template
+      des: 根据 template 创建 issue. opens an issue from an issue template
+
+    - url: https://github.com/brcrista/summarize-issues
+      des: issue 数据汇总. Pretty useful. Used to summarize issues in repo, need to assign tags in config-file.
+    - url: https://github.com/ethomson/issue-dashboard
+      des: issue 数据汇总. another issues-summary workflow, not need to assign tags, but need to add 'issue_query', in order to implement a similar but more flexible query-mechanism.
+
+
+- type: ghac-PR
+  repo:
+    - url: https://github.com/actions/labeler
+      des: PR label.
+    - url: https://github.com/peter-evans/create-pull-request
+    - url: https://github.com/peter-evans/dockerhub-description
+      des: 把 README 同步到 dockerhub
+    - url: https://github.com/readmeio/rdme
+      des: rdme. 把接口文档同步到 README
+```
 
 
