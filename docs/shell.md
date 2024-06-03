@@ -1,6 +1,31 @@
 
 
 
+
+```yaml
+  qs:
+ - q: Parameter Expansion
+ - q: shell变量
+ - q: shell 命令行参数
+ - q: 特殊变量(环境var, 位置var, 预定义var, 自定义var) 怎么定义和使用var？ # 注意使用"$xxx"
+ - q: 数组
+ - q: 只有使用 `${array[@]}` 才会被作为多个元素，否则数组会被作为一个元素
+ - q: 基本操作符 (算法运算符, 关系运算符, 布尔运算符与逻辑运算符, 字符串运算符)
+ - q: 关系运算符 ()
+ - q: 逻辑运算符 Logical Operators (&&, &, ||, ;)
+ - q: 文件比较
+ - q: 双括号命令
+ - q: 判断
+ - q: 循环 (for...do...done)
+ - q: 替代
+ - q: 引用机制、let、vars、printf
+ - q: shell中使用main函数
+ - q: 巧用heredocs
+ - q: rewrite(>), append file(>>).
+ - q: How to execute shell in remote VPS locally? (How to execute shell inside vps remotely?)
+```
+
+
 ## **shell 脚本**
 
 - *有哪些基本的 shell 语法？shell 脚本有哪些常用变量？*

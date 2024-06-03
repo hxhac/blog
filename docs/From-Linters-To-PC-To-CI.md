@@ -6,81 +6,174 @@ tags: [devops, spec]
 
 
 
-## linters
+## super-linter
 
-
+:::tip
 各种linters让人挑花了眼，找个主流的linter，随便加几个feats就又是个新linter，都没啥意思
 
 其实只需要照着super-liner就ok了，一个ALL-In-One的linter，集成了各种主流语言和工具的linter
 
+
+<details>
+<summary>linters</summary>
+
 ```yaml
-    - url: https://github.com/DavidAnson/markdownlint
-      des: Markdownlint not support MDX, but it works actually, strangely enough.
-    - url: https://github.com/igorshubovych/markdownlint-cli
-      des: Markdownlint Tool that docs using.
+- url: https://github.com/koalaman/shellcheck
+  des: Pretty Useful. Used to check shell scripts.
+  
+- url: https://github.com/adrienverge/yamllint
+  des: yamllint
+
+- url: https://github.com/ansible/ansible-lint
+  des: 自动修复 lint 时查出的 fail. "ansible-lint --write"
+```
+
+</details>
+
+***super-linter既帮我们筛选了各种语言和服务的主流linter，并且提供了更易用的使用方法***
+
+:::
+
+<details open>
+<summary>markdownlint</summary>
+
+以markdownlint为例，之前我需要自己维护下面这些repo。
+
+但是使用super-linter之后，只需要 super-linter -> markdownlint-cli -> markdownlint 就可以了。
+
+完全没必要维护（或者star）以下这些repo。
+
+```yaml
+- url: https://github.com/DavidAnson/markdownlint
+  des: Markdownlint not support MDX, but it works actually, strangely enough.
+- url: https://github.com/igorshubovych/markdownlint-cli
+  des: Markdownlint Tool that docs using.
 
 ```
 
+</details>
+
+
+<details open>
+<summary>scan secrets</summary>
+
+上面举了个
+
 
 ```yaml
-    - url: https://github.com/trufflesecurity/trufflehog
-      des: 与gitleaks颇为互补的一个secrets scan工具，不同于gitleaks这种专注于扫描本地git repo代码的工具，trufflehog的feats在于scan远程repo，还支持扫描S3、Postman、Docker等服务中的secrets。trufflehog既是cli，也是CI
-      
-    - url: https://github.com/gitleaks/gitleaks
-      des:
+- url: https://github.com/trufflesecurity/trufflehog
+  des: 与gitleaks颇为互补的一个secrets scan工具，不同于gitleaks这种专注于扫描本地git repo代码的工具，trufflehog的feats在于scan远程repo，还支持扫描S3、Postman、Docker等服务中的secrets。trufflehog既是cli，也是CI
+  
+- url: https://github.com/gitleaks/gitleaks
+  des:
 
-    - url: https://github.com/thoughtworks/talisman
-      des: gitleaks本身就可以配置为pre-commit，为啥还需要tailsman呢?
-      
-   - url: https://github.com/byt3hx/jsleak
-      des: 跟gitleaks还不太一样，jsleak只支持scan网站，也就是mlc和site sucker之间的区别（本地扫描和扫描网站）
-
+- url: https://github.com/thoughtworks/talisman
+  des: gitleaks本身就可以配置为pre-commit，为啥还需要tailsman呢?
+  
+- url: https://github.com/byt3hx/jsleak
+  des: 跟gitleaks还不太一样，jsleak只支持scan网站，也就是mlc和site sucker之间的区别（本地扫描和扫描网站）
 
 ```
 
-```yaml
-    - url: https://github.com/koalaman/shellcheck
-      des: Pretty Useful. Used to check shell scripts.
-      
-    - url: https://github.com/adrienverge/yamllint
-      des: yamllint
-
-    - url: https://github.com/ansible/ansible-lint
-      des: 自动修复 lint 时查出的 fail. "ansible-lint --write"
-```
+</details>
 
 
 
+:::danger
+
+但是比较可惜的是，super-lint与pre-commit目前没有集成
+
+所以对我来说，我对super-lint的定位是，一个更好的 awesome-linters，用来查看各种主流linter
+
+:::
 
 
 
 ## pre-commit
 
-husky + commitlint + lint-staged
+:::tip
+***pre-commit是各种linter和ci之间的Mediator，或者说“支点”***
+
+在使用pre-commit之前，我需要在本地配置一套所有linter的cli，在commit之前先自己预跑一下，保证没有问题之后，再commit，这是在本地。在remote呢，则需要在CI里（按照本地linter）再配置一套，保证local和remote的linter保持一致。
+
+可以看到，这就引入了维护成本，无论想改local还是remote，对端都要修改。
+
+如果使用pre-commit就不需要这么麻烦了，配置之后，无论local和remote都可以共用一套配置。
+
+除此之外，pre-commit还支持跨CI
+
+众所周知，各种CI的workflow的写法是不同的，所以必然带来维护成本。之前没用pre-commit的时候，我需要维持自己常用的github actions和gitlab CI的两套用来发布golang的workflow，就很麻烦。我现在直接用 Taskfile + Pre-commit 就完全解决掉这个问题了。
+
+---
+
+总结一下，使用pre-commit代替linter+CI的好处在于：
+
+- 减少维护成本，配置一次，多处使用，不需要在local和remote再配置了
+- 跨CI使用，同样减少维护成本
+
+:::
+
+
+上面从更宏观的角度出发，解释了为啥pre-commit相比之下是更好的解决方案
+
+下面从微观角度出发聊聊
+
+下面是一个经典的“前端项目pre-commit”的stack
+
+<details>
+<summary>husky + commitlint + lint-staged</summary>
 
 ```yaml
-    - url: https://github.com/standard/standard
-    - url: https://github.com/eslint/eslint
-    - url: https://github.com/prettier/prettier
+- url: https://github.com/standard/standard
+- url: https://github.com/eslint/eslint
+- url: https://github.com/prettier/prettier
 
 
-    - url: https://github.com/typicode/husky
-      des: |
-        用来自动化生成各种git hooks，相当于简化了之前需要手写各种git hooks的流程，但是比较鸡肋。需要注意的是，husky只适用于前端项目，因为需要搭配package.json使用。
-        还需要注意的是，git hooks是本地文件，不会推送到remote，所以就很鸡肋了，并无法起到我们预想中的“规范团队开发流程”的作用，用husky就可以避免这个问题
-        和commitlint一起卸载了，所有这些git hooks都不如pre-commit好用
+- url: https://github.com/typicode/husky
+  des: |
+    用来自动化生成各种git hooks，相当于简化了之前需要手写各种git hooks的流程，但是比较鸡肋。需要注意的是，husky只适用于前端项目，因为需要搭配package.json使用。
+    还需要注意的是，git hooks是本地文件，不会推送到remote，所以就很鸡肋了，并无法起到我们预想中的“规范团队开发流程”的作用，用husky就可以避免这个问题
+    和commitlint一起卸载了，所有这些git hooks都不如pre-commit好用
 
-    - url: https://github.com/lint-staged/lint-staged
-      des: Run linters on git staged files. 也就是在pre-commit时执行Linter，但是需要注意两点，仅针对staged代码，而不是整个项目，另外，依托于项目的package.json，所以仅适配js项目。
+- url: https://github.com/lint-staged/lint-staged
+  des: Run linters on git staged files. 也就是在pre-commit时执行Linter，但是需要注意两点，仅针对staged代码，而不是整个项目，另外，依托于项目的package.json，所以仅适配js项目。
 
-    - url: https://github.com/conventional-changelog/commitlint
-      des: 给 husky 生成 commit-msg
+- url: https://github.com/conventional-changelog/commitlint
+  des: 给 husky 生成 commit-msg
 
+# [Cz工具集使用介绍 - 规范Git提交说明 - 掘金](https://juejin.cn/post/6844903831893966856)
+- url: https://github.com/commitizen/cz-cli
+  des: 也是commit-msg，基于commitizen实现的，可以搭配husky使用，所以同样是适用于js项目，不适用于其他语言的项目。
 
 ```
 
+</details>
 
-pre-commit是各种linter和ci之间的中间xxx，非常好用的
+
+
+
+### [2024/6/3]
+
+
+[Comparing Code Quality Meta Tools - House Absolute(ly Pointless)](https://blog.urth.org/2020/05/08/comparing-code-quality-meta-tools/)
+
+```yaml
+
+- url: https://github.com/evilmartians/lefthook
+  des: golang实现，其实就是local模式的pre-commit
+  
+- url: https://github.com/sds/overcommit
+  
+- url: https://github.com/houseabsolute/precious
+  des: ??? rust实现，但是没什么人用
+
+```
+
+对 lefthook 有点兴趣，但是这几个的生态目前来说，跟pre-commit还是没法比
+
+
+
+
 
 
 ## goreleaser
@@ -88,7 +181,7 @@ pre-commit是各种linter和ci之间的中间xxx，非常好用的
 :::tip
 最早知道goreleaser，就是用来在ci时用来直接release到homebrew的
 
-再之后发现可以用来代替我一直使用的 `antfu/changelogithub` + `softprops/action-gh-release`，用来把changelog直接release掉，才决定好好研究一下goreleaser
+再之后发现可以用来代替我一直使用的 `antfu/changelogithub` + `softprops/action-gh-release`，用来把changelog直接展示到release，才决定好好研究一下goreleaser
 
 <details>
 <summary>对比两种写法</summary>
@@ -137,7 +230,9 @@ jobs:
     name: release
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@main
+     with:
+       fetch-depth: 0
       - uses: actions/setup-go@main
       - uses: goreleaser/goreleaser-action@v5
         if: startsWith(github.ref, 'refs/tags/')
@@ -160,8 +255,6 @@ jobs:
 :::
 
 
-
-
 支持如下feat:
 
 - homebrew (and tap)
@@ -180,6 +273,9 @@ jobs:
 
 - url: https://github.com/antfu/changelogithub
   des: 可以用goreleaser的changelog代替
+- url: https://github.com/git-chglog/git-chglog
+  des: 用来自动生成格式化 CHANGELOG，类似 antfu/changelogithub，但是可以通过配置和模板，自定义
+  
 
 - url: https://github.com/release-it/release-it
   des: 

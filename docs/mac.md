@@ -16,6 +16,8 @@
         我选择 LICEcap，因为 LICEcap 支持定时 gif 截图，直接定时截取，就不需要手动截取了。LICEcap 只支持 gif 截图，但是响应很快。kap 功能很多（主要功能是 gif 截图 + 自定义截取 gif），但是用起来响应非常慢。
 
         LICEcap 相比之下，qt 的录屏功能更好，另外需要注意，实际上 qt 录屏后的 mov 文件就很小了，再转 gif 文件反而变大（举个例子，qt 录屏 1min 大概 15M，用了两个转 gif 工具，一个转完 9M 但是很糊，另一个转完 50M 清晰但是太大）
+  - url: https://github.com/lihaoyun6/QuickRecorder
+      des: 也是录屏工具
 
 
     - url: https://github.com/GothenburgBitFactory/taskwarrior
@@ -40,8 +42,16 @@
         Remote Desktop. rustdesk, software size within 22MB, support almost all platforms, and faster than TeamViewer. We used so much remote-desktop software, such as ToDesk, RustDesk, TeamViewer, AnyDesk, GoToMyPc, etc. Most of these support feats like Two-way desktop sharing(screens, keyboard, mouse, etc), File transfer, Clipboard sharing, etc.
 
         rustdesk其实也并没有之前看reddit上大家所说的那么快，尤其是不自己部署relay server的情况下，连接慢，还非常卡。支持远程唤醒（也就是在remote机器睡眠的情况下，晃动一下鼠标就能点亮显示器）。当然局域网下还是很快的，因为支持TCP-Tunneling嘛，直接内网打洞了。
+  
+    rustdesk这类工具的原理是啥？
+    
+        rustdesk使用RFB实现远程桌面。RFB是一种轻量级的远程桌面协议，主要用于 VNC 远程桌面解决方案。RFB 协议允许客户端获取服务器的屏幕内容并进行操作。除了RFB，还有RDP和SPICE两种RD协议。
+  
 
 #    - url: https://github.com/gnachman/iTerm2
+    
+    - url: https://github.com/Eugeny/tabby
+      des: 类似iTerm2的Terminal，但是相比之下，支持一些plugin，比如docker、sync-config(用来自动从gist同步配置)等等，但是这些plugin都没啥用
 
     - url: https://github.com/Caldis/Mos
       des: Mos
@@ -177,8 +187,14 @@
       des: |
         lazygit的定位是啥呢？相同功能的替代品太多了，不说Tower, SourceTree之类的GUI工具了，也不说直接命令行操作了，这两种都有点“没必要”。感觉各种IDE自带的VCS工具都比lazygit这种TUI要好用很多。
         能否认为lazygit其实是适配平时用neovim之类并没有内置VCS工具的IDE的coder的？
+  
     - url: https://github.com/ranger/ranger
       des: ranger就是类似fzf, joshuto 这样的在terminal查看finder的工具
+
+    - url: https://github.com/ajeetdsouza/zoxide
+      des: 某种autojump, z, zsh-z 吧，用来优化cd体验的。意思不大，zsh/fish 本身就支持他的这几个功能，为了这种小功能徒增心智负担，没有必要。当然zoxide自称会根据用户访问目录的频率和最近性来优化跳转结果，但是据我为期一周的适用，并没有感觉有啥区别。zoxide还可以与fzf, joshuto, ranger等cli集成使用，但是我没用过，具体如何不知。
+
+      
     # [Trending Neovim Plugins in 2024](https://dotfyle.com/neovim/plugins/trending)
     - url: https://github.com/neovim/neovim
     - url: https://github.com/AstroNvim/AstroNvim
@@ -458,6 +474,8 @@ launchers:
       des: vscode/备忘录
     - feat: TODO 工具(TODO.md)
       des: 提醒事项/滴答清单
+
+
 ```
 
 
