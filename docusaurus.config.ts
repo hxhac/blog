@@ -5,7 +5,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: 'Hxhac',
   // tagline: '',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/favicon.svg',
 
   // Set the production url of your site here
   url: 'https://blog.hxha.xyz',
@@ -18,18 +18,18 @@ const config: Config = {
   // organizationName: 'facebook', // Usually your GitHub org/user name.
   // projectName: 'docusaurus', // Usually your repo name.
 
-  onBrokenLinks: 'throw', // docusaurus build 时忽略坏链
-  onBrokenAnchors: 'throw',
-  onBrokenMarkdownLinks: 'throw',
-  onDuplicateRoutes: 'throw',
+  // onBrokenLinks: 'throw', // docusaurus build 时忽略坏链
+  // onBrokenAnchors: 'throw',
+  // onBrokenMarkdownLinks: 'throw',
+  // onDuplicateRoutes: 'throw',
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
-  i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
-  },
+  // i18n: {
+  //   defaultLocale: 'en',
+  //   locales: ['en'],
+  // },
 
   presets: [
     [
@@ -43,6 +43,7 @@ const config: Config = {
         //   blogSidebarTitle: 'All posts',
         //   blogSidebarCount: 'ALL',
         // },
+        blog: false,
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },

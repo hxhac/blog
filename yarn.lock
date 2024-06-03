@@ -1463,17 +1463,6 @@
     "@types/gtag.js" "^0.0.12"
     tslib "^2.6.0"
 
-"@docusaurus/plugin-google-gtag@^3.4.0":
-  version "3.4.0"
-  resolved "https://registry.npmmirror.com/@docusaurus/plugin-google-gtag/-/plugin-google-gtag-3.4.0.tgz#42489ac5fe1c83b5523ceedd5ef74f9aa8bc251b"
-  integrity sha512-Dsgg6PLAqzZw5wZ4QjUYc8Z2KqJqXxHxq3vIoyoBWiLEEfigIs7wHR+oiWUQy3Zk9MIk6JTYj7tMoQU0Jm3nqA==
-  dependencies:
-    "@docusaurus/core" "3.4.0"
-    "@docusaurus/types" "3.4.0"
-    "@docusaurus/utils-validation" "3.4.0"
-    "@types/gtag.js" "^0.0.12"
-    tslib "^2.6.0"
-
 "@docusaurus/plugin-google-tag-manager@3.4.0":
   version "3.4.0"
   resolved "https://registry.npmmirror.com/@docusaurus/plugin-google-tag-manager/-/plugin-google-tag-manager-3.4.0.tgz"
@@ -1549,7 +1538,7 @@
     tslib "^2.6.0"
     utility-types "^3.10.0"
 
-"@docusaurus/theme-common@3.4.0", "@docusaurus/theme-common@^3.4.0":
+"@docusaurus/theme-common@3.4.0":
   version "3.4.0"
   resolved "https://registry.npmmirror.com/@docusaurus/theme-common/-/theme-common-3.4.0.tgz"
   integrity sha512-0A27alXuv7ZdCg28oPE8nH/Iz73/IUejVaCazqu9elS4ypjiLhK3KfzdSQBnL/g7YfHSlymZKdiOHEo8fJ0qMA==
