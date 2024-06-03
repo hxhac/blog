@@ -34,14 +34,16 @@ tags: [devops, spec]
 
 :::
 
-<details open>
+
+以markdownlint为例，之前我需要自己维护下面这些repo
+
+但是使用super-linter之后，只需要 super-linter -> markdownlint-cli -> markdownlint 就可以了
+
+完全没必要维护（或者star）以下这些repo
+
+<details>
 <summary>markdownlint</summary>
 
-以markdownlint为例，之前我需要自己维护下面这些repo。
-
-但是使用super-linter之后，只需要 super-linter -> markdownlint-cli -> markdownlint 就可以了。
-
-完全没必要维护（或者star）以下这些repo。
 
 ```yaml
 - url: https://github.com/DavidAnson/markdownlint
@@ -54,18 +56,22 @@ tags: [devops, spec]
 </details>
 
 
-<details open>
-<summary>scan secrets</summary>
+上面举了个确定了使用markdownlint，但是linter cli和action还分为两个repo，很难维护的问题。这个问题本身就很普遍了。
 
-上面举了个
+下面则是技术选型的问题，同样是 scan secrets 的需求，
+
+
+
+<details>
+<summary>scan secrets</summary>
 
 
 ```yaml
-- url: https://github.com/trufflesecurity/trufflehog
-  des: 与gitleaks颇为互补的一个secrets scan工具，不同于gitleaks这种专注于扫描本地git repo代码的工具，trufflehog的feats在于scan远程repo，还支持扫描S3、Postman、Docker等服务中的secrets。trufflehog既是cli，也是CI
-  
 - url: https://github.com/gitleaks/gitleaks
   des:
+
+- url: https://github.com/trufflesecurity/trufflehog
+  des: 与gitleaks颇为互补的一个secrets scan工具，不同于gitleaks这种专注于扫描本地git repo代码的工具，trufflehog的feats在于scan远程repo，还支持扫描S3、Postman、Docker等服务中的secrets。trufflehog既是cli，也是CI
 
 - url: https://github.com/thoughtworks/talisman
   des: gitleaks本身就可以配置为pre-commit，为啥还需要tailsman呢?
@@ -83,7 +89,7 @@ tags: [devops, spec]
 
 但是比较可惜的是，super-lint与pre-commit目前没有集成
 
-所以对我来说，我对super-lint的定位是，一个更好的 awesome-linters，用来查看各种主流linter
+所以对我来说，***我对super-lint的定位是，一个更好的 awesome-linters，用来查看各种主流linter***
 
 :::
 
@@ -92,15 +98,15 @@ tags: [devops, spec]
 ## pre-commit
 
 :::tip
-***pre-commit是各种linter和ci之间的Mediator，或者说“支点”***
+***pre-commit是各种linter和ci之间的mediator，或者说“支点”***
 
 在使用pre-commit之前，我需要在本地配置一套所有linter的cli，在commit之前先自己预跑一下，保证没有问题之后，再commit，这是在本地。在remote呢，则需要在CI里（按照本地linter）再配置一套，保证local和remote的linter保持一致。
 
-可以看到，这就引入了维护成本，无论想改local还是remote，对端都要修改。
+可以看到，这就引入了维护成本，无论想改local还是remote，对端都要修改。就很麻烦。
 
 如果使用pre-commit就不需要这么麻烦了，配置之后，无论local和remote都可以共用一套配置。
 
-除此之外，pre-commit还支持跨CI
+除此之外，pre-commit还支持跨CI，所有workflow都集成到pre-commit了，无论换什么CI，只需要加一个 `pre-commit run --all-files` 就可以了。
 
 众所周知，各种CI的workflow的写法是不同的，所以必然带来维护成本。之前没用pre-commit的时候，我需要维持自己常用的github actions和gitlab CI的两套用来发布golang的workflow，就很麻烦。我现在直接用 Taskfile + Pre-commit 就完全解决掉这个问题了。
 
@@ -149,6 +155,17 @@ tags: [devops, spec]
 
 </details>
 
+
+### BP
+
+```yaml
+
+- q: pre-commit 应该使用remote还是local?
+  x: 当然是remote，团队开发时，如果使用local的cli，无法通过git来管理version，就会导致很多问题。
+
+
+
+```
 
 
 
