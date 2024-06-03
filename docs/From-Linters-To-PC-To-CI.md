@@ -56,11 +56,13 @@ tags: [devops, spec]
 </details>
 
 
-上面举了个确定了使用markdownlint，但是linter cli和action还分为两个repo，很难维护的问题。这个问题本身就很普遍了。
+上面举了个确定了使用markdownlint，但是linter cli和action还分为两个repo，很难维护的问题。
 
-下面则是技术选型的问题，同样是 scan secrets 的需求，
+下面则是技术选型的问题，同样是 scan secrets 的需求，有各种工具可以选择，那么哪个更好用呢？
 
+如果看super-linter的话，就一目了然了，直接选择gitleaks就完事了，其他的几种都是特定场景下的选择，并不主流。
 
+这就super-linter的用处
 
 <details>
 <summary>scan secrets</summary>
@@ -126,6 +128,10 @@ tags: [devops, spec]
 
 下面是一个经典的“前端项目pre-commit”的stack
 
+但是其他语言的各种项目则没有这么完备的pre-commit方案可以选择，能怎么办呢?
+
+毫无疑问的，不如所有语言（包括js）都统一用pre-commit好了，不是吗?
+
 <details>
 <summary>husky + commitlint + lint-staged</summary>
 
@@ -163,6 +169,7 @@ tags: [devops, spec]
 - q: pre-commit 应该使用remote还是local?
   x: 当然是remote，团队开发时，如果使用local的cli，无法通过git来管理version，就会导致很多问题。
 
+- q: 大型项目每次commit要做全量pre-commit非常耗时，怎么只做staged代码的pre-commit?
 
 
 ```
@@ -272,6 +279,8 @@ jobs:
 :::
 
 
+### 用goreleaser替换其他CI
+
 支持如下feat:
 
 - homebrew (and tap)
@@ -285,6 +294,12 @@ jobs:
 
 
 用goreleaser就可以代替之前常用的
+
+
+```mdx-code-block
+<Tabs>
+<TabItem value="release + changelog">
+```
 
 ```yaml
 
@@ -304,6 +319,26 @@ jobs:
 
 ```
 
+```mdx-code-block
+</TabItem>
+<TabItem value="s3">
+```
+
+```yaml
+
+- url: https://github.com/bonaysoft/uptoc
+  des: 用来把文件传到S3, Google Storage, Qiniu, cos, Aliyun OSS的工具。比较常见的使用场景是把前端打包好的dist传到CDN上。
+
+
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
+
+
 
 需要付费(goreleaser PRO $6/Month)的feat
 
@@ -312,6 +347,34 @@ jobs:
 - nightlies
 
 
+```mdx-code-block
+<Tabs>
+<TabItem value="Docker Image">
+```
+
+```yaml
+
+# docker-image
+
+- url: https://github.com/docker/login-action
+  des: Used to login DockerHub
+- url: https://github.com/docker/build-push-action
+  des: Used to push image to DockerHub. Usually used with login-action.
+- url: https://github.com/aliyun/acr-login
+  des: Used to login ACR(Aliyun Container Registries)
+- url: https://github.com/hhyasdf/image-sync-action
+  des: 基于 image-syncer 实现，用来同步一些基于Docker Registry的服务（比如ACR, DockerHub, Quay, Harbor） What should be noted that it is not a two-way synchronization, but supports synchronizing an image to multiple docker-registries. The main usage scenario of this tool is to directly synchronize the packaged image to multiple platforms during release. There is no need to write a separate job for each docker-registry as before. Using this, we can directly synchronize to multiple platforms. goreleaser has done similar, but accroding this post , goreleaser only supports dockerhub, gcr and ghcr.
+
+- url: https://github.com/ad-m/github-push-action
+  des: push, push to repo itself, we can also push to another repo
+
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="announce">
+```
+
 ```yaml
 
 # docker-image
@@ -319,6 +382,10 @@ jobs:
 
 ```
 
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
 
 
 
