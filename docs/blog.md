@@ -96,7 +96,7 @@ md 是最自由的，相比于 text 也有基本的样式支持。
 
 ---
 
-用 IDEA 做笔记存在哪些问题？怎么解决？
+### 用 IDEA 做笔记存在哪些问题？怎么解决？
 
 - [x] 最大的问题，theme 有问题，有点丑，~~没有合适的 theme，IDE 通常的黑色，写文档不是很舒服，怎么解决？ *直接用 solarized 作为 IDE 的 theme，然后把部分内容自定义到跟 mweb 样式相同。可以试试看是否可行？*~~  使用 `Monokai Pro主题` 后，简直打开新世界，很多功能都变得很舒服
 - [x] 无序列表和有序列表缩进（正常应该都是 4 格缩进，但是在 goland 里无序列表 2 格，有序列表 3 格）？ ~~这个问题已经用`.eitorconfig`解决 *但是开启"markdown 自动辅助"之后，editorconfig 定义的缩进 4 格就变成 2 格了，离谱* 反正就是个决策，如果想继续用 goland 作为 md 编辑器，就改成 2 个呗~~ 默认使用 MD030 规则 fix 即可（2 或 3 个空格（分别用于有序列表和无序列表））
@@ -1466,12 +1466,12 @@ qs本身也是我极简主义中“提高使用频率”的实践
         - vitepress的TOC也有bug（滑动TOC时，页面会跟着滑动）
         - 之前CodeBlock里没有自动换行的需求，还是没有
         - 其他的问题，比如CodeBlock的自定义语言支持、PlantUML之类的就不说了。
-  
-  
+
+
 #    - url: https://github.com/airene/vitepress-blog-pure
 #      des: 一般般吧
-    
-    
+
+
     - url: https://github.com/withastro/astro
       des: |
         MPA，很多基础功能没有内置，比如“代码块复制按钮”
@@ -1489,12 +1489,12 @@ qs本身也是我极简主义中“提高使用频率”的实践
     - url: https://github.com/withastro/starlight
     - url: https://github.com/cirry/astro-yi
       des: 这个astro的blog theme真心不错
-      
-      
+
+
     - url: https://github.com/kuizuo/blog
       des: 目前能找到的最好的docusaurus blog theme，我的blog也是用的这个。试用了hugo之类的各种blog framework，以及Gmeek这种gh-based的（基于issue创建文档太逆天了，不能直接手动添加md来触发build，并且使用utterances实现评论，把issue搞的非常乱。也不支持TOC和列表式Archive，UI也很丑），都不太行。又试用了一下，他这个侵入性太多了，后期不好更新版本，所以自己用blog-only模式自己搞一个，保留该repo作为参考。
-      
-      
+
+
     - url: https://github.com/gohugoio/hugo
       des: 试用过很多次，但是可能确实天生八字不合，用过的theme包括但不限于 jane, hugo-bearblog, LoveIt, hugo-paper, hugo-paperMod, hugo-PaperModX, hugo-theme-stack, hugo-theme-nostyleplease. 可以看到要不就是neat到TOC和archive都不支持，要不就是LoveIt这种很重的。
       qs:
@@ -1505,10 +1505,3 @@ qs本身也是我极简主义中“提高使用频率”的实践
 ```
 
 ---
-
-
-
-
-
-
-

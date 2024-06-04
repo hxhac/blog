@@ -1,5 +1,5 @@
 ---
-title: 从linters到pre-commit再到CI
+title: 优化代码质量：从linters到pre-commit再到CI
 date: 2024-06-01
 tags: [devops, spec]
 ---
@@ -20,7 +20,7 @@ tags: [devops, spec]
 ```yaml
 - url: https://github.com/koalaman/shellcheck
   des: Pretty Useful. Used to check shell scripts.
-  
+
 - url: https://github.com/adrienverge/yamllint
   des: yamllint
 
@@ -77,7 +77,7 @@ tags: [devops, spec]
 
 - url: https://github.com/thoughtworks/talisman
   des: gitleaks本身就可以配置为pre-commit，为啥还需要tailsman呢?
-  
+
 - url: https://github.com/byt3hx/jsleak
   des: 跟gitleaks还不太一样，jsleak只支持scan网站，也就是mlc和site sucker之间的区别（本地扫描和扫描网站）
 
@@ -128,9 +128,7 @@ tags: [devops, spec]
 
 下面是一个经典的“前端项目pre-commit”的stack
 
-但是其他语言的各种项目则没有这么完备的pre-commit方案可以选择，能怎么办呢?
 
-毫无疑问的，不如所有语言（包括js）都统一用pre-commit好了，不是吗?
 
 <details>
 <summary>husky + commitlint + lint-staged</summary>
@@ -161,6 +159,12 @@ tags: [devops, spec]
 
 </details>
 
+但是其他语言的各种项目则没有这么完备的pre-commit方案可以选择，能怎么办呢?
+
+毫无疑问的，不如所有语言（包括js）都统一用pre-commit好了，不是吗?
+
+pre-commit是比husky更通用也更强大的选择
+
 
 ### BP
 
@@ -185,15 +189,45 @@ tags: [devops, spec]
 
 - url: https://github.com/evilmartians/lefthook
   des: golang实现，其实就是local模式的pre-commit
-  
+
 - url: https://github.com/sds/overcommit
-  
+
 - url: https://github.com/houseabsolute/precious
   des: ??? rust实现，但是没什么人用
 
 ```
 
 对 lefthook 有点兴趣，但是这几个的生态目前来说，跟pre-commit还是没法比
+
+
+
+## Build Tools (Taskfile)
+
+:::tip
+Makefile之类的Build Tools和CI或者Pre-Commit之类的工具，也是强相关的
+
+```yaml
+
+- url: https://github.com/go-task/task
+- url: https://github.com/casey/just
+  des: 某种Makefile或者Taskfile，没发现有什么比较特别的feats
+- url: https://github.com/dnaeon/makefile-graph
+  des: 用来生成Makefile依赖图的
+```
+
+目前主流的Build Tool就makefile, taskfile, just这三种
+
+翻了几篇 "taskfile vs just" 的post，普遍认为没啥区别，just的feats，Taskfile基本上都支持（比如跨平台、env、错误提示、易于调试等等），随便选哪个都可以。
+
+因为我更喜欢yaml，所以我肯定选择Taskfile了
+
+:::
+
+
+
+
+
+
 
 
 
@@ -307,10 +341,10 @@ jobs:
   des: 可以用goreleaser的changelog代替
 - url: https://github.com/git-chglog/git-chglog
   des: 用来自动生成格式化 CHANGELOG，类似 antfu/changelogithub，但是可以通过配置和模板，自定义
-  
+
 
 - url: https://github.com/release-it/release-it
-  des: 
+  des:
 
 - url: https://github.com/softprops/action-gh-release
 
@@ -440,3 +474,62 @@ jobs:
 ```
 
 
+
+
+## code quality
+
+
+
+```yaml
+
+# 代码质量检查工具 (sonarqube, codacy)
+## 通常包括 测试覆盖率、代码安全漏洞、代码质量(代码重复、可读性...)
+
+- url: https://github.com/SonarSource/sonarqube
+  des: sonarqube
+
+- url: https://github.com/codacy/codacy-coverage-reporter
+  des: codacy
+
+---
+
+# 测试覆盖率 (codecov, coveralls)
+## codecov比coveralls好用很多
+
+- url: https://github.com/codecov/codecov-action
+  des: 支持几乎全部CI
+- url: https://github.com/codecov/self-hosted
+
+
+---
+
+# 依赖管理
+
+- url: https://github.com/dependabot/dependabot-core
+  des: dependabot. github原生集成dependabot，我们也可以在gitlab中使用dependabot
+
+- url: https://github.com/renovatebot/renovate
+  des: just install renovate apps in gh-repos, it will auto-generate a "Dependency Dashboard" issue. 用来直接fetch最新的dependency，前端用这个比较多，但是这个其实支持几乎所有语言。dependabot不支持gitea，可以用renovate代替
+
+
+---
+
+# 代码安全漏洞
+## 其实就是找pkg的CVE嘛
+
+- url: https://github.com/github/codeql
+  des: codeql
+- url: https://github.com/github/codeql-action
+  des: codeql
+
+```
+
+以上基本上列举了目前各方面的几个主流code quality工具，项目无论开源项目都能使用
+
+:::tip
+
+综合来说，可以看到，SQ的feats更多，基本上覆盖了下面的那些个工具，但是各种社区中对SQ的评价都比较低，普遍认为FPR偏高，并且无法找到真正的bug
+
+所以如果更侧重于测试覆盖率，使用CodeCov是个更好的选择
+
+:::
