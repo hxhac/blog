@@ -167,7 +167,7 @@ blogtrottr send mail有real-time和interval digest几种hourly之类的几种模
 ```yaml
     - url: https://github.com/reminiflux/reminiflux
       des: Alternative web frontend for miniflux. 相当于miniflux的ttrss UI，但是不支持Three-Column展示，可用性就比较差 "Support for three-column layout"
-      
+
     - url: https://github.com/HenryQW/Awesome-TTRSS
       des: ttrss
 
@@ -181,9 +181,3 @@ blogtrottr send mail有real-time和interval digest几种hourly之类的几种模
 feeds-merge + BriefCake + gmail 这套用了半年多了，没有丝毫不适，唯一的问题在于，感觉还是ttrss那种三栏布局更爽
 
 并且也想把BriefCake踢掉，不想用什么第三方服务
-
-
-
-
-
-
