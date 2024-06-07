@@ -1,6 +1,43 @@
 
 
 
+
+## Compares
+
+```yaml
+
+- type: ms-framework
+  repo:
+    - url: https://github.com/go-micro/go-micro
+      des: 内置的身份验证和数据存储设计。一个轻量级的微服务框架，做为一个在 2015 年就开源的项目，在当时那个市面上开源的微服务框架稀少的年代，它是为数不多的选择。主要槽点就是作者重心做云服务去啦，相应的社区维护力度较弱。
+
+    - url: https://github.com/TarsCloud/TarsGo
+      des: tarsgo 做为 tars 这个大的 C++ 重量级微服务框架下的 go 语言服务框架，腾讯开源项目；对于有个好爹的这个事情，总是喜忧参半的；好处在于很多能力不用从头开始做起，直接依托母体；劣势就是独立性相对较差，要选用这个 tarsgo 的前提，就是要先选用 tars 这个大的框架。社区建设：Tars 已经是 linux 基础会项目，社群上做的还算可以，毕竟 tars 作为腾讯开源影响力最大的项目之一，有 QQ、微信群。
+
+    - url: https://github.com/apache/dubbo-go
+      des: dubbogo 做为 dubbo 这个大的 Java 重量级微服务框架下的 go 语言服务框架，阿里开源项目；优劣基本跟 tarsgo 一样。
+
+    - url: https://github.com/go-kit/kit
+      des: go-kit 从严格意义上来说，并不能做为一个微服务框架，而应该是一个微服务的工具集，其官方定义上也是这么说，提供各种选项让你自由选择。做为一个在 2015 年就开源的项目，也是当时很多 go 项目为数不多的选择之一。
+
+    - url: https://github.com/douyu/jupiter
+      des: jupiter 做为一个重量级的微服务框架，斗鱼开源项目；整体思路上跟 tars 和 dubbo 力图提供一个大一统的框架，更确切的说是一个微服务平台，也带类似 tars 和 dubbo 那样的管理控制台，提供各种控制和 metric 的继承，这也无形中给选用此框架带来了不少代价，tars 和 dubbo 本身是有历史沉淀和大厂背景的，很多腾讯系、阿里系公司会采用。
+
+
+    - url: https://github.com/go-kratos/kratos
+      des: 一个轻量级的微服务框架，B 站开源项目；web 和 rpc 服务的 DSL 协议直接采用 protobuf 和 grpc 进行定义，采用 wire 做依赖注入、自动生成代码。框架定位于解决微服务的核心诉求。社区建设：社区建设和维护上，算是做的中规中矩，官网更新一般，有公众号和微信群问题解答。
+    - url: https://github.com/tx7do/kratos-transport
+      des: kratos生态，把消息队列、任务队列，以及Websocket、HTTP3等网络协议实现为微服务框架 Kratos 的transport.Server。在使用的时候,可以调用kratos.Server()方法，将之注册成为一个Server。
+  des: golang的各种微服务框架比如gozero, gomicro, kratos, gokit, gizmo, kite, go-chassis, ego, eagle
+
+
+```
+
+
+
+
+
+
 ```yaml
 
 - q: 聊聊gozero的zrpc是啥？基于grpc实现了哪些附加功能？

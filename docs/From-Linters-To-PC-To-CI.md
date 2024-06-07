@@ -201,6 +201,42 @@ pre-commit是比husky更通用也更强大的选择
 
 
 
+### [2024/6/5] reviewdog
+
+
+```yaml
+- url: https://github.com/reviewdog/reviewdog
+```
+
+整理gh.yml时看到之前用过的reviewdog，想到其实reviewdog和pre-commit虽说在各自官方des是完全不同的，一个是用来Code Review的，一个是自定义git hooks操作，***但是实际上从功能上来说，二者没啥区别，都可以集成各种linter，也都支持在开发环境、CI中使用（包括在PR时触发）***
+
+
+:::tip
+
+但是为啥后来没有继续使用reviewdog，而是转用pre-commit了呢？
+
+reviewdog提供了.reviewdog.yml和CI两种方式来执行rules，我们可以像pre-commit一样，在开发环境和CI都复用.reviewdog.yml（也可以使用各种acts来优化体验），但是需要注意的是：
+
+- reviewdog的配置文件.reviewdog.yml只支持local mode，不支持像pre-commit那样的remote mode，***这里需要注意的是如果只支持local mode的话，这些cli的version就无法通过git来管理了（并且CI里也需要逐个手动安装这些cli），给团队开发带来很多麻烦***
+- reviewdog的核心还是CI，可以看到其官方提供了 [public-reviewdog-github-actions](https://github.com/reviewdog/reviewdog#public-reviewdog-github-actions) 这些acts，但是其生态还是远不如pre-commit
+
+
+:::
+
+
+
+当然，虽然二者的功能很相似，但是归根到底定位还是不同的
+
+reviewdog的独特feats（或者说作为Code Review工具的feat）是code suggest（也就是在PR和MR操作时，直接在VCS中提示有问题的代码），用户体验更友好。
+
+pre-commit虽然也能在PR和MR时实现类似操作，但是用户体验一定是不如reviewdog的。
+
+但是基于上述的两点原因，个人认为还是pre-commit的易用性和通用性更好。
+
+
+
+
+
 ## Build Tools (Taskfile)
 
 :::tip

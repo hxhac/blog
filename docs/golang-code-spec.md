@@ -212,3 +212,45 @@
 ```
 
 - Unmarshal(non-pointer map[string]string) 问题 [json: Unmarshal(non-pointer map[string]string) 问题 - 掘金](https://juejin.cn/post/7063739889812144159)
+
+
+
+
+
+
+
+![100gomistakes](pix/x/100gomistakes.png)
+
+
+
+[touchid/touchid.go at master · mritd/touchid](https://github.com/mritd/touchid/blob/master/touchid.go)
+
+```go
+type DeviceType string
+
+const (
+ DeviceTypeAny               DeviceType = "any"
+ DeviceTypeWatch             DeviceType = "watch"
+ DeviceTypeBiometrics        DeviceType = "biometrics"
+ DeviceTypeBiometricsOrWatch DeviceType = "biometrics_watch"
+)
+
+func Auth(dType DeviceType, reason string) (bool, error) {
+ switch dType {
+ case DeviceTypeAny:
+  return Authenticate(1, reason)
+ case DeviceTypeWatch:
+  return Authenticate(2, reason)
+ case DeviceTypeBiometrics:
+  return Authenticate(3, reason)
+ case DeviceTypeBiometricsOrWatch:
+  return Authenticate(4, reason)
+ default:
+  return false, errors.New("invalid device type")
+ }
+}
+
+```
+
+
+

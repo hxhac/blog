@@ -2,7 +2,23 @@
 
 
 
+
+
+## docker
+
+![Docker Architecture Hierarchy](pix/ms/Docker_Architecture_hierarchy.png)
+![Docker Linux Interfaces](pix/ms/Docker-linux-interfaces.svg)
+![Container Ecosystem](pix/ms/container-ecosystem.png)
+![Containerd Overview](pix/ms/containerd.png)
+
 ## k8s
+
+
+![Kubernetes Architecture](pix/ms/k8s.png)
+
+![Linux vs Kubernetes](pix/ms/linux-vs-k8s.png)
+
+k8s 的架构和 linux 真是几乎一一对应。我们把单机（操作系统）类比成公司，其中的 CPU 类比成工人。而 k8s 则是把单机类比为工人，或者说相当于一大堆大型集团公司的母公司，用来调度这些子公司。
 
 ### x
 
@@ -78,6 +94,16 @@
 
 
 
+
+## MQ
+
+![Kafka Optimization](./pix/ms/kafka-optimize.png)
+
+
+
+
+
+
 ## monitor
 
 
@@ -94,3 +120,9 @@
 
 
 ```
+
+
+![Prometheus Architecture](./pix/ms/prometheus-arch.png)
+![Prometheus Internal Architecture](./pix/ms/prom-architecture.svg)
+
+

@@ -1,6 +1,46 @@
 
 
 
+## regex
+
+
+```yaml
+    - q: "*regex syntax?*"
+      x: (characters, quantifiers, groups, white-space, character classes, anchors and boundaries, inline modifiers, back-references, lookarounds, flags)
+    - q: 多行修饰符
+    - q: 量词（重复次数）
+      x: "*, +, ?, {}"
+    - q: 特殊单字符（简写字符集）
+      x: \d, \D, \w, \W, \s, \S
+    - q: 空白符（其他项）
+      x: \f, \n, \r, \t, \v
+    - q: 特殊运算符
+      x: 锚点(^, $), 范围(转义运算符\, 或运算符|, 点运算符., 特征标群(...), be[^ou]r), , 不保存子组
+    - q: 模式修正符
+      x: 忽略大小写i (?i), 全局搜索g, 多行匹配m, 惰性匹配(在量词后加上 ? 将使得相关匹配项变成惰性模式, 正则默认贪婪匹配), 具名捕获
+    - q: 断言（零宽度断言）
+      x: 正向断言 (?=), 正向否定断言 (?!), 反向断言 (?<=), 反向否定断言 (?<!)
+    - q: unicode
+      x: emoji, 汉字
+```
+
+
+常用regex
+
+```yaml
+
+          x: |
+            \\D只保留数字
+
+            \s.*  以空格开始的所有字符
+
+            [u4e00-\u9fa5] 选择所有汉字
+
+            [^\u4e00-\u9fa5]^[-,.?:;'\"!'] 选择所有非汉字，但是不包括-,.?:;'"!'这些标点符号
+
+            ^((?!abc).)*admin((?!abc).)*$ 包含 admin 且不包含 abc。
+```
+
 
 ## ts
 
@@ -48,6 +88,18 @@
    des: 打包工具，better than gulp, grunt and webpack. vite 就是个更好用的 webpack，但是解决了 webpack 那些众所周知的问题，比如说打包速度慢、配置复杂之类的。
    qs:
      - q: Compare webpack, vite, babel, gulp, grunt?
+```
+
+
+
+
+### Data-Visualization
+
+```yaml
+- type: Data-Visualization
+  repo:
+    - url: https://github.com/apache/echarts
+    - url: https://github.com/d3/d3
 ```
 
 
